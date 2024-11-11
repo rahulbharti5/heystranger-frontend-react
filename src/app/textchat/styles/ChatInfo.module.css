@@ -1,0 +1,120 @@
+/* ChatInfo.module.css */
+.chatInfoWrapper {
+  display: flex;
+  padding: 1rem 1.25rem;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1.25rem;
+  align-self: stretch;
+}
+.noInterestBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.9375rem;
+  align-self: stretch;
+}
+.noInterest {
+  color: #000;
+  text-align: center;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.interestBox {
+  display: flex;
+  align-items: flex-start;
+  align-content: flex-start;
+  gap: 0.8125rem 0.9375rem;
+  align-self: stretch;
+  flex-wrap: wrap;
+}
+.interest {
+  display: flex;
+  height: 1.4375rem;
+  padding: 0 0.625rem;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  gap: 0.3125rem;
+  flex-wrap: wrap;
+  border-radius: 0.625rem;
+  background: #344056;
+}
+.interestText {
+  display: flex;
+  height: 1.0625rem;
+  flex-direction: column;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #f1f4f9;
+  font-size: 0.625rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.closeIcon {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.connectedMessage {
+  color: #000;
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  align-self: stretch;
+}
+
+.inputWrapper {
+  display: flex;
+  padding-left: 0.625rem;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+  border-radius: 0.875rem;
+  border: 1px solid #344056;
+}
+.input {
+  color: #303741;
+
+  /* Small Paragraph */
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 1.3125rem */
+  text-transform: capitalize;
+  background-color: transparent;
+  border: none;
+}
+.input::placeholder {
+  color: #303741;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 1.3125rem */
+  text-transform: capitalize;
+}
+.input:focus {
+  outline: none;
+}
+.inputIcon {
+  width: 0.875rem;
+  height: 0.875rem;
+  display: flex;
+  /*padding: 0.625rem;*/
+  justify-content: center;
+  align-items: center;
+  gap: 0.625rem;
+  border-radius: 4.375rem;
+  background: #ff4742;
+  box-shadow: 0 0 0 4px #ff4742;
+  border: 0;
+  cursor: pointer;
+  padding: 20px;
+}

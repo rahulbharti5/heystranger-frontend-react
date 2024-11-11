@@ -1,0 +1,56 @@
+/* ChatBox.module.css */
+.chatBoxWrapper {
+  width: 100%;
+  flex-grow: 1;
+  overflow-y: auto; /* Allows scrolling if needed */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.625rem;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+.receiver {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 0.8125rem;
+  max-width: 70%;
+}
+.avatar {
+  width: 3.1875rem;
+  height: 3.1875rem;
+}
+.senderText,
+.receiverText {
+  display: flex;
+  min-width: 7rem;
+  padding: 0.625rem;
+  justify-content: start;
+  align-items: center;
+  gap: 0.625rem;
+  border-radius: 0.625rem 0.625rem 0.625rem 0;
+  background: #e1e8f0;
+}
+.receiverMessage,
+.senderMessage {
+  color: #000;
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.sender {
+  max-width: 70%;
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 0.375rem;
+  float: right;
+  align-self: flex-end;
+}
+.senderText {
+  border-radius: 0.625rem 0.625rem 0 0.625rem;
+  background: #344056;
+}
+.senderMessage {
+  color: #f1f4f9;
+}

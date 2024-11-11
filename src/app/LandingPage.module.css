@@ -1,0 +1,124 @@
+/* LandingPage.module.css */
+.outerWrapper {
+  width: 100%;
+  background-color: #353b4a;
+}
+.innerWrapper {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  padding: 0.625rem 0;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+  background: linear-gradient(
+      180deg,
+      rgba(217, 217, 217, 0) 0.57%,
+      #353b4a 74.3%
+    ),
+    url("Background.png") lightgray 50% / cover no-repeat;
+}
+.navbar {
+  display: flex;
+  padding: 0.625rem 1.25rem;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+.logoIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+  background: url("Logo.png") lightgray 50% / contain no-repeat;
+}
+.logoText {
+  color: #aa886d;
+  font-size: 1.375rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 110%; /* 1.5125rem */
+  text-transform: capitalize;
+}
+.menuButton {
+  height: 2rem;
+  background-color: transparent;
+  border: none;
+}
+
+.heroTextWrapper {
+  display: flex;
+  padding: 1.875rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25rem;
+  align-self: stretch;
+}
+.heroText {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.125rem;
+  align-self: stretch;
+}
+.mainText {
+  align-self: stretch;
+  color: #d4c9c1;
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 100%; /* 2rem */
+  text-transform: capitalize;
+}
+.smallPara {
+  padding: 0;
+  margin: 0;
+  width: 18.875rem;
+  color: #fff;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 1.3125rem */
+  text-transform: capitalize;
+}
+
+.buttonsWrapper {
+  display: flex;
+  width: 18rem;
+  align-items: flex-start;
+  gap: 1.125rem;
+}
+
+.chatButton,
+.videoButton {
+  cursor: pointer;
+  border-radius: 2.0625rem;
+  background: #d4c9c0;
+  display: flex;
+  width: 7.25rem;
+  padding: 0.625rem 0.625rem 0.625rem 0;
+  justify-content: center;
+  align-items: center;
+  gap: 0.625rem;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+.chatButtonText {
+  color: #101729;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%; /* 1.3125rem */
+  text-transform: capitalize;
+}
+.videoButton {
+  width: 9.25rem;
+  background: #aa886d;
+}
+.videoButtonText {
+  color: #f1f4f9;
+}

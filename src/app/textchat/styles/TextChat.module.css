@@ -1,0 +1,24 @@
+/* TextChat.module.css */
+.outerWrapper {
+  height: 100vh;
+  background: linear-gradient(
+      180deg,
+      rgba(217, 217, 217, 0) 0.57%,
+      #353b4a 74.3%
+    ),
+    url("Background.png") lightgray 50% / cover no-repeat;
+}
+.innerWrapper {
+  display: flex;
+  height: 100vh;
+  /* padding: 0.625rem 0rem 1.875rem 0rem; */
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  background: linear-gradient(
+    180deg,
+    rgba(200, 201, 203, 0.73) 0%,
+    rgba(20, 27, 45, 0.73) 100%
+  );
+}

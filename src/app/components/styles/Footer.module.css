@@ -1,0 +1,12 @@
+/* Footer.module.css */
+.footerWrapper {
+  display: flex;
+  width: 100%;
+  padding: 1.25rem 0rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.625rem;
+  background: #353b4a;
+  color: #aa886d;
+}

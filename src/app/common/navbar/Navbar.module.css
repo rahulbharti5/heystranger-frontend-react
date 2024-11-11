@@ -1,0 +1,49 @@
+/* Navbar.module.css */
+
+.navbar {
+  box-sizing: border-box;
+  display: flex;
+  width: 100%;
+  padding: 0.625rem 1.25rem;
+  justify-content: space-between;
+  align-items: center;
+}
+.backButton {
+  display: flex;
+  width: 2.3125rem;
+  height: 2.4375rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.625rem;
+  flex-shrink: 0;
+  border-radius: 0.3125rem;
+  background: #b6b8bc;
+  border: none;
+  cursor: pointer;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+.logoIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+  background: url("Logo.png") lightgray 50% / contain no-repeat;
+}
+.logoText {
+  color: var(--Brand-Color, #aa886d);
+
+  /* H4 Heading */
+  font-family: Inter;
+  font-size: 1.375rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 110%; /* 1.5125rem */
+  text-transform: capitalize;
+}
+.menuButton {
+  height: 2rem;
+  background-color: transparent;
+  border: none;
+}

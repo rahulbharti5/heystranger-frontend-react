@@ -1,0 +1,79 @@
+/* Features.module.css */
+.featuresWrapper {
+  display: flex;
+  /* width: 22.5rem; */
+  padding: 3.125rem 1.875rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 4.0625rem;
+}
+.featuresHeading {
+  align-self: stretch;
+  color: #aa886d;
+  text-align: center;
+
+  /* H2 Heading */
+  font-family: Inter;
+  font-size: 1.75rem;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 110%; /* 1.925rem */
+  text-transform: capitalize;
+  margin: 0;
+  padding: 0;
+}
+
+/* TODO: Refactr the feature components , Dont forget about css */
+
+.featureWrapper {
+  display: flex;
+  /* height: 20.0625rem; */
+  padding: 2rem 0.875rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  align-self: stretch;
+  border-radius: 1.875rem;
+  border: 1px solid #aa886d;
+  background: #353b4a;
+  box-shadow: 5px 5px 5px 0px #aa886d;
+}
+.featurIcon {
+  width: 5rem;
+  height: 4.5rem;
+  flex-shrink: 0;
+  background: url("https://source.unsplash.com/random/400x300");
+}
+.featureContent {
+  display: flex;
+  padding: 0.625rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  align-self: stretch;
+}
+.featureHeading {
+  color: #aa886d;
+
+  /* H5 Heading */
+  font-family: Inter;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 100%; /* 1.25rem */
+  text-transform: capitalize;
+}
+.featurText {
+  align-self: stretch;
+  color: #fff;
+
+  /* Small Paragraph */
+  font-family: Inter;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 1.3125rem */
+  text-transform: capitalize;
+}
