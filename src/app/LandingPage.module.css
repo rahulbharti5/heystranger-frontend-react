@@ -18,6 +18,7 @@
       #353b4a 74.3%
     ),
     url("Background.png") lightgray 50% / cover no-repeat;
+  overflow: hidden;
 }
 .navbar {
   display: flex;
@@ -48,6 +49,7 @@
   height: 2rem;
   background-color: transparent;
   border: none;
+  cursor: pointer;
 }
 
 .heroTextWrapper {
@@ -75,9 +77,6 @@
   text-transform: capitalize;
 }
 .smallPara {
-  padding: 0;
-  margin: 0;
-  width: 18.875rem;
   color: #fff;
   font-size: 0.875rem;
   font-style: normal;
@@ -88,7 +87,6 @@
 
 .buttonsWrapper {
   display: flex;
-  width: 18rem;
   align-items: flex-start;
   gap: 1.125rem;
 }
@@ -99,8 +97,7 @@
   border-radius: 2.0625rem;
   background: #d4c9c0;
   display: flex;
-  width: 7.25rem;
-  padding: 0.625rem 0.625rem 0.625rem 0;
+  padding: 0.625rem 1rem;
   justify-content: center;
   align-items: center;
   gap: 0.625rem;
@@ -116,7 +113,6 @@
   text-transform: capitalize;
 }
 .videoButton {
-  width: 9.25rem;
   background: #aa886d;
 }
 .videoButtonText {

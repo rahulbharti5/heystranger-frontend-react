@@ -32,10 +32,7 @@
   background: url("Logo.png") lightgray 50% / contain no-repeat;
 }
 .logoText {
-  color: var(--Brand-Color, #aa886d);
-
-  /* H4 Heading */
-  font-family: Inter;
+  color: #aa886d;
   font-size: 1.375rem;
   font-style: normal;
   font-weight: 700;
@@ -46,4 +43,5 @@
   height: 2rem;
   background-color: transparent;
   border: none;
+  cursor: pointer;
 }

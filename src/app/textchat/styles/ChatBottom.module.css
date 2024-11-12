@@ -33,6 +33,7 @@
   gap: 0.625rem;
   border-radius: 4rem;
   background: #aa886d;
+  cursor: pointer;
 }
 .InputWrapper {
   display: flex;
@@ -45,8 +46,7 @@
 }
 .input {
   color: #94a2b8;
-
-  /* Small Paragraph */
+  width: 80%;
   font-size: 0.875rem;
   font-style: normal;
   font-weight: 400;

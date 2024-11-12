@@ -1,4 +1,5 @@
 import styles from "./styles/ChatBox.module.css";
+import {useEffect, useRef} from "react";
 
 // eslint-disable-next-line react/prop-types
 const Sender = ({ message }) => {
@@ -23,36 +24,17 @@ const Receiver = ({ message }) => {
   );
 };
 
-const chat = [
-  {
-    text: "Hey! How's it going?",
-    sender: "user1",
-  },
-  {
-    text: "Pretty good, thanks! How about you?",
-    sender: "user2",
-  },
-  {
-    text: "Doing well! Working on some code.",
-    sender: "user1",
-  },
-  {
-    text: "Nice! Need any help?",
-    sender: "user2",
-  },
-  {
-    text: "Maybe later, just testing a layout for now.",
-    sender: "user1",
-  },
-  {
-    text: "Got it! Let me know if you need anything.",
-    sender: "user2",
-  },
-];
-
-const ChatBox = () => {
+// eslint-disable-next-line react/prop-types
+const ChatBox = ({chat}) => {
+  const chatBox = useRef(null);
+  useEffect(()=>{
+    if (chatBox.current) {
+      chatBox.current.scrollTop = chatBox.current.scrollHeight;
+    }
+  },[chat]);
   return (
-    <div className={styles.chatBoxWrapper}>
+    <div className={styles.chatBoxWrapper} ref={chatBox}>
+      {/* eslint-disable-next-line react/prop-types */}
       {chat.map((message, index) =>
         message.sender === "user1" ? (
           <Sender key={index} message={message.text} />

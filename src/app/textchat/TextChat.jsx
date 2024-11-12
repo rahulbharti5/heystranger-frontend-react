@@ -1,27 +1,30 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Navbar from "../common/navbar/Navbar";
 import ChatInfo from "./ChatInfo";
+import ChatBox from "./ChatBox.jsx";
 import ChatBottom from "./ChatBottom.jsx";
 import styles from "./styles/TextChat.module.css";
-import ChatBox from "./ChatBox.jsx";
 
-const interests = ["React", "Node", "Express"];
 const TextChat = () => {
-  const x = useRef(null);
-  const y = useRef(null);
+  const x = useRef(null), y = useRef(null);
   useEffect(() => {
-    x.current.style.height = window.innerHeight + "px";
-    y.current.style.height = window.innerHeight + "px";
-  });
+    const height = window.innerHeight + "px";
+    x.current.style.height = y.current.style.height = height;
+  }, []);
+
+  const [interests, setInterests] = useState([]);
+  const [chat, setChat] = useState([]);
+
   return (
-    <div className={styles.outerWrapper} ref={y}>
-      <div className={styles.innerWrapper} ref={x}>
-        <Navbar />
-        <ChatInfo interests={interests} />
-        <ChatBox />
-        <ChatBottom />
+      <div className={styles.outerWrapper} ref={y}>
+        <div className={styles.innerWrapper} ref={x}>
+          <Navbar />
+          <ChatInfo interests={interests} addInterests={setInterests} />
+          <ChatBox chat={chat} />
+          <ChatBottom setChat={setChat} />
+        </div>
       </div>
-    </div>
   );
 };
+
 export default TextChat;
