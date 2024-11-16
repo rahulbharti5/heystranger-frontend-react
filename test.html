@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox Layout</title>
+    <style>
+        /* Grandparent Element */
+        .grandparent {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        .top, .bottom {
+            height: 50px; /* Fixed size for top and bottom elements */
+            background-color: lightcoral;
+        }
+
+        .middle {
+            flex: 1; /* Remaining height assigned to the middle element */
+            display: flex;
+            flex-direction: column; /* Default column direction */
+            justify-content: flex-start; /* Elements align at the top */
+            overflow-y: auto; /* Enables scrolling when content exceeds */
+            background-color: lightblue;
+            padding-bottom: 10px; /* Add a little space at the bottom for visibility */
+        }
+
+        .child {
+            align-self: flex-end; /* Child elements align to the right */
+            padding: 10px;
+            background-color: lightgreen;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="grandparent">
+    <div class="top">Top (Fixed)</div>
+    <div class="middle" id="middle">
+        <div class="child">Child Element 1</div>
+        <div class="child">Child Element 2</div>
+        <div class="child">Child Element 3</div>
+    </div>
+    <div class="bottom">Bottom (Fixed)</div>
+</div>
+
+<script>
+    // Function to add new child elements at the bottom
+    function addNewElement() {
+        const middle = document.getElementById("middle");
+        const newElement = document.createElement("div");
+        newElement.classList.add("child");
+        newElement.innerText = "New Child Element";
+        middle.appendChild(newElement);
+
+        // Scroll to the bottom after appending the new element
+        middle.scrollTop = middle.scrollHeight;
+    }
+
+    // Simulate adding new elements after a few seconds
+    setInterval(addNewElement, 1000);
+</script>
+</body>
+</html>

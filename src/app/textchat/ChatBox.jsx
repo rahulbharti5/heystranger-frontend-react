@@ -1,5 +1,6 @@
 import styles from "./styles/ChatBox.module.css";
 import {useEffect, useRef} from "react";
+import {Box, CircularProgress} from "@mui/material";
 
 // eslint-disable-next-line react/prop-types
 const Sender = ({ message }) => {
@@ -25,7 +26,7 @@ const Receiver = ({ message }) => {
 };
 
 // eslint-disable-next-line react/prop-types
-const ChatBox = ({chat}) => {
+const ChatBox = ({chat,status}) => {
   const chatBox = useRef(null);
   useEffect(()=>{
     if (chatBox.current) {
@@ -42,6 +43,12 @@ const ChatBox = ({chat}) => {
           <Receiver key={index} message={message.text} />
         )
       )}
+      {status ==="connecting" && (<Box sx={{ display: 'flex',width: '100%' ,height: '100%',alignItems: 'center',justifyContent: 'center',flexDirection:"column",gap:"10px"}}>
+        <CircularProgress sx={{
+          color: "#e1e8f0", // Custom color (e.g., Tomato red)
+        }} size="5rem" />
+        <h2 style={{color:"#e1e8f0"}}>Searching ...</h2>
+      </Box>)}
     </div>
   );
 };

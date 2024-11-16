@@ -8,7 +8,7 @@ const LandingPage = () => {
   const x = useRef(null);
   useEffect(() => {
     x.current.style.height = window.innerHeight + "px";
-    console.log(x.current.style.height);
+    // console.log(x.current.style.height);
   });
   const handleMenuButton = () => {
     console.log("Menu Button Clicked");
@@ -24,7 +24,7 @@ const LandingPage = () => {
             <div className={styles.logoText}>Hey Stranger</div>
           </div>
           <button className={styles.menuButton} onClick={handleMenuButton}>
-            <img src={"Menu.svg"} alt="menu Icon"/>
+            <img src={"Menu.svg"} alt="menu Icon" />
           </button>
         </div>
         {/* Main Content */}

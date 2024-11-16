@@ -14,14 +14,24 @@ const TextChat = () => {
 
   const [interests, setInterests] = useState([]);
   const [chat, setChat] = useState([]);
+  const [status, setStatus] = useState("stable") // connection : stable,connecting ,connected
+
+  useEffect(() => {
+    const sender = setInterval(()=>{
+      if(status === "connected"){
+        setChat((pre)=>[{text:"You are Connected With [User Name]",sender:"user2"},...pre]);
+      }
+    },2000);
+    return () => {clearInterval(sender);}
+  },[status]);
 
   return (
       <div className={styles.outerWrapper} ref={y}>
         <div className={styles.innerWrapper} ref={x}>
           <Navbar />
-          <ChatInfo interests={interests} addInterests={setInterests} />
-          <ChatBox chat={chat} />
-          <ChatBottom setChat={setChat} />
+          <ChatInfo interests={interests} addInterests={setInterests} status={status} />
+          <ChatBox chat={chat} status={status} />
+          <ChatBottom setChat={setChat} status={status} setStatus={setStatus}/>
         </div>
       </div>
   );
