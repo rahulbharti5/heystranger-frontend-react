@@ -1,6 +1,7 @@
 import styles from "./styles/ChatBottom.module.css";
 import { useEffect, useRef, useState } from "react";
 import { Button, Dialog, DialogActions, DialogTitle } from "@mui/material";
+import useWebRTC from "../store/useWebRTC";
 
 // eslint-disable-next-line react/prop-types
 const PopUp = ({ open, setOpen, setConfirm }) => {
@@ -54,6 +55,9 @@ const ChatBottom = ({ setChat, status, setStatus }) => {
       setConfirm(false);
     }
   }, [confirm]);
+  const { connection, remoteStream, startCall, connect, error } = useWebRTC(
+    "http://localhost:3000"
+  );
 
   const handleConnection = () => {
     if (status === "stable") {
@@ -81,7 +85,6 @@ const ChatBottom = ({ setChat, status, setStatus }) => {
       }, 2000);
     }
   };
-
   return (
     <div className={styles.bottomWrapper}>
       <div className={styles.infoButton}>
@@ -90,7 +93,7 @@ const ChatBottom = ({ setChat, status, setStatus }) => {
         {/* TODO: Connection Button Functionality */}
         <button
           className={styles.connectButton}
-          onClick={handleConnection}
+          onClick={connect}
           onDoubleClick={connectNext}
         >
           <img src={"raphael_connect.svg"} alt="search" />
