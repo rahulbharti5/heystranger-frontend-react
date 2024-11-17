@@ -9,6 +9,7 @@ import useWebRTC from "../store/useWebRTC.jsx";
 const TextChat = () => {
   const x = useRef(null),
     y = useRef(null);
+  // Get Hight Logic
   useEffect(() => {
     const height = window.innerHeight + "px";
     x.current.style.height = y.current.style.height = height;
@@ -32,6 +33,12 @@ const TextChat = () => {
     };
   }, [status]);
 
+  // WEBRTC LOGIC
+  // const { connection, remoteStream, startCall, connect, error } = useWebRTC(
+  //   "http://localhost:3000"
+  // );
+  // console.log(connection);
+  // connect();
   return (
     <div className={styles.outerWrapper} ref={y}>
       <div className={styles.innerWrapper} ref={x}>
@@ -41,6 +48,7 @@ const TextChat = () => {
           addInterests={setInterests}
           status={status}
         />
+        {/* <button onClick={connect}>Start Call</button> */}
         <ChatBox chat={chat} status={status} />
         <ChatBottom setChat={setChat} status={status} setStatus={setStatus} />
       </div>
