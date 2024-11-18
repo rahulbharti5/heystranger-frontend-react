@@ -1,6 +1,6 @@
 import styles from "./styles/ChatBox.module.css";
-import {useEffect, useRef} from "react";
-import {Box, CircularProgress} from "@mui/material";
+import { useEffect, useRef } from "react";
+import { Box, CircularProgress } from "@mui/material";
 
 // eslint-disable-next-line react/prop-types
 const Sender = ({ message }) => {
@@ -26,13 +26,13 @@ const Receiver = ({ message }) => {
 };
 
 // eslint-disable-next-line react/prop-types
-const ChatBox = ({chat,status}) => {
+const ChatBox = ({ chat, status }) => {
   const chatBox = useRef(null);
-  useEffect(()=>{
+  useEffect(() => {
     if (chatBox.current) {
       chatBox.current.scrollTop = chatBox.current.scrollHeight;
     }
-  },[chat]);
+  }, [chat]);
   return (
     <div className={styles.chatBoxWrapper} ref={chatBox}>
       {/* eslint-disable-next-line react/prop-types */}
@@ -43,12 +43,27 @@ const ChatBox = ({chat,status}) => {
           <Receiver key={index} message={message.text} />
         )
       )}
-      {status ==="connecting" && (<Box sx={{ display: 'flex',width: '100%' ,height: '100%',alignItems: 'center',justifyContent: 'center',flexDirection:"column",gap:"10px"}}>
-        <CircularProgress sx={{
-          color: "#e1e8f0", // Custom color (e.g., Tomato red)
-        }} size="5rem" />
-        <h2 style={{color:"#e1e8f0"}}>Searching ...</h2>
-      </Box>)}
+      {status === "matching" && (
+        <Box
+          sx={{
+            display: "flex",
+            width: "100%",
+            height: "100%",
+            alignItems: "center",
+            justifyContent: "center",
+            flexDirection: "column",
+            gap: "10px",
+          }}
+        >
+          <CircularProgress
+            sx={{
+              color: "#e1e8f0", // Custom color (e.g., Tomato red)
+            }}
+            size="5rem"
+          />
+          <h2 style={{ color: "#e1e8f0" }}>matching ...</h2>
+        </Box>
+      )}
     </div>
   );
 };

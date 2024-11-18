@@ -1,10 +1,11 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useContext, useEffect, useRef, useState } from "react";
 import Navbar from "../common/navbar/Navbar";
 import ChatInfo from "./ChatInfo";
 import ChatBox from "./ChatBox.jsx";
 import ChatBottom from "./ChatBottom.jsx";
 import styles from "./styles/TextChat.module.css";
 import useWebRTC from "../store/useWebRTC.jsx";
+import { UserContext } from "../store/store.jsx";
 
 const TextChat = () => {
   const x = useRef(null),
@@ -15,42 +16,75 @@ const TextChat = () => {
     x.current.style.height = y.current.style.height = height;
   }, []);
 
-  const [interests, setInterests] = useState([]);
+  const { status, connect, disconnect, dataChannel } = useWebRTC(
+    "http://localhost:3000"
+  );
+  const { interests } = useContext(UserContext);
   const [chat, setChat] = useState([]);
-  const [status, setStatus] = useState("stable"); // connection : stable,connecting ,connected
 
+  // Listen for incoming messages
   useEffect(() => {
-    const sender = setInterval(() => {
-      if (status === "connected") {
-        setChat((pre) => [
-          { text: "You are Connected With [User Name]", sender: "user2" },
-          ...pre,
+    if (dataChannel) {
+      const handleMessage = (event) => {
+        setChat((prevChat) => [
+          {
+            text: event.data,
+            sender: "user2",
+          },
+          ...prevChat,
         ]);
-      }
-    }, 2000);
-    return () => {
-      clearInterval(sender);
-    };
-  }, [status]);
+      };
+      dataChannel.onmessage = handleMessage;
+      return () => {
+        dataChannel.close();
+        dataChannel.onopen = null; // Clean up listener
+        dataChannel.onclose = null; // Clean up listener
+        dataChannel.onclosing = null; // Clean up listener
+        dataChannel.onerror = null; // Clean up listener
+        dataChannel.onmessage = null; // Clean up listener
+      };
+    }
+  }, [dataChannel]);
 
-  // WEBRTC LOGIC
-  // const { connection, remoteStream, startCall, connect, error } = useWebRTC(
-  //   "http://localhost:3000"
-  // );
-  // console.log(connection);
-  // connect();
+  const connectionHandeler = () => {
+    if (status === "stable") {
+      const userData = {
+        username: "Rahul",
+        type: "text",
+        interests: interests, // Use the latest state here
+      };
+      console.log(userData);
+      connect(userData);
+    } else if (status === "connected") {
+      disconnect();
+    }
+  };
+  const sendMessage = (message) => {
+    if (message && dataChannel && dataChannel.readyState === "open") {
+      dataChannel.send(message);
+      setChat((prevChat) => [
+        {
+          text: message,
+          sender: "user1", // Replace with the sender dynamically if needed
+        },
+        ...prevChat,
+      ]);
+    } else {
+      console.log("Data channel is not open");
+    }
+  };
   return (
     <div className={styles.outerWrapper} ref={y}>
       <div className={styles.innerWrapper} ref={x}>
         <Navbar />
-        <ChatInfo
-          interests={interests}
-          addInterests={setInterests}
-          status={status}
-        />
+        <ChatInfo interests={interests} status={status} />
         {/* <button onClick={connect}>Start Call</button> */}
         <ChatBox chat={chat} status={status} />
-        <ChatBottom setChat={setChat} status={status} setStatus={setStatus} />
+        <ChatBottom
+          status={status}
+          connectionHandeler={connectionHandeler}
+          sendMessage={sendMessage}
+        />
       </div>
     </div>
   );

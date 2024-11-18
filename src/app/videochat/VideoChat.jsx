@@ -4,7 +4,7 @@ import useWebRTC from "../store/useWebRTC";
 
 const WebRTCComponent = () => {
   const socketUrl = "http://localhost:3000"; // Replace with your server URL
-  const { connect, disconnect, dataChannel } = useWebRTC(socketUrl);
+  const { connect, disconnect, dataChannel, status } = useWebRTC(socketUrl);
   const [message, setMessage] = useState("");
   const [chatLog, setChatLog] = useState([]);
 
@@ -18,30 +18,20 @@ const WebRTCComponent = () => {
       console.log("Data channel is not open");
     }
   };
-
+  useEffect(() => {
+    console.log(status);
+    if (status === "connected") {
+      setChatLog([]);
+    }
+  }, [status]);
   // Listen for incoming messages
   useEffect(() => {
     if (dataChannel) {
-      console.log(dataChannel);
       const handleMessage = (event) => {
         setChatLog((prev) => [
           ...prev,
           { sender: "Peer", message: event.data },
         ]);
-      };
-      dataChannel.onopen = () => {
-        console.log("Data channel opened");
-        setChatLog(() => []);
-      };
-      dataChannel.onclose = () => {
-        console.log("Data channel closed");
-      };
-      dataChannel.onclosing = () => {
-        console.log("Data channel is closing");
-      };
-      dataChannel.onerror = () => {
-        console.log("Data channel error:");
-        disconnect();
       };
       dataChannel.onmessage = handleMessage;
       return () => {
@@ -55,14 +45,19 @@ const WebRTCComponent = () => {
     }
   }, [dataChannel]);
 
+  const handleConnection = () => {
+    const userData = { interests: [], chatType: "text", username: "User" };
+    connect(userData);
+  };
   return (
     <div style={{ padding: "20px" }}>
       <h1>WebRTC Chat</h1>
       <div>
-        <button onClick={connect}>Connect</button>
+        <button onClick={handleConnection}>Connect</button>
         <button onClick={disconnect}>Disconnect</button>
       </div>
       <div style={{ marginTop: "20px" }}>
+        <h4>Status : {status}</h4>
         <h2>Chat</h2>
         <div
           style={{
